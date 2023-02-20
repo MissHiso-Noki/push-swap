@@ -6,15 +6,23 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:15:55 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/17 15:29:40 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/20 17:07:04 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 // intervertit les 2 premiers éléments au sommet de la pile a.
 // Ne fait rien s’il n’y en a qu’un ou aucun.
-void    swap_a()
+char    swap_a(char *pile_a)
 {
+    char *tmp;
 
+    *tmp = pile_a[1];
+    pile_a[1] = pile_a[0];
+    pile_a[0] = *tmp;
+
+    return (*pile_a);
 }
 
 // intervertit les 2 premiers éléments au sommet de la pile b.

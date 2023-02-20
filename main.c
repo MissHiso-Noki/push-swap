@@ -6,13 +6,19 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/17 15:29:45 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/20 17:07:06 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int main(int argc, char **argv)
 {
+    char    tableau[2];
+
+    tableau[0] = 1;
+    tableau[1] = 2;
+
+    printf("%d \n", swap_a(tableau));
     return (0);
 }
