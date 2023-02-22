@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:14:27 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/16 16:34:37 by ccoste           ###   ########.fr        #
+#    Updated: 2023/02/22 15:53:57 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = utils.a
 
 _LIBFT = ft_atoi.c \
 	ft_isprint.c \
+	ft_puchar.c \
 	ft_putchar_fd.c \
 	ft_bzero.c \
 	ft_putendl_fd.c \
@@ -24,6 +25,7 @@ _LIBFT = ft_atoi.c \
 	ft_strtrim.c \
 	ft_isalnum.c \
 	ft_memcmp.c \
+	ft_putstr.c \
 	ft_putstr_fd.c \
 	ft_strlcpy.c \
 	ft_substr.c \

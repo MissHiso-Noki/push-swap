@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:21:39 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 15:52:04 by ccoste           ###   ########.fr       */
+/*   Created: 2023/02/22 14:50:43 by ccoste            #+#    #+#             */
+/*   Updated: 2023/02/22 15:14:00 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+// Décale d’une position vers le bas tous les élements de
+// la pile a. Le dernier élément devient le premier.
+void    reverse_rotate_a()
 {
-	char			*str;
-	unsigned int	i;
 
-	str = s;
-	i = 0;
-	if (s == NULL)
-	{
-		return (NULL);
-	}
-	while (i < n)
-	{
-		str[i] = c;
-		i++;
-	}
-	return (s);
 }
 
-//int main () {
-//   char str[50];
+// Décale d’une position vers le bas tous les élements de
+// la pile b. Le dernier élément devient le premier
+void    reverse_rotate_b()
+{
 
-//   strcpy(str,"This is string.h library function");
-//   puts(str);
+}
 
-//   ft_memset(str,'$',11);
-//   puts(str);
+// rra et rrb en meme temps
+void    reverse_rotate_r()
+{
 
-//   return(0);
-//}
+}

@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:21:39 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 15:52:04 by ccoste           ###   ########.fr       */
+/*   Created: 2023/02/22 15:48:12 by ccoste            #+#    #+#             */
+/*   Updated: 2023/02/22 15:52:29 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_putstr(char *s)
 {
-	char			*str;
-	unsigned int	i;
+	int	i;
 
-	str = s;
 	i = 0;
-	if (s == NULL)
+	while (s[i] != '\0')
 	{
-		return (NULL);
-	}
-	while (i < n)
-	{
-		str[i] = c;
+		ft_putchar(s[i]);
 		i++;
 	}
-	return (s);
 }
-
-//int main () {
-//   char str[50];
-
-//   strcpy(str,"This is string.h library function");
-//   puts(str);
-
-//   ft_memset(str,'$',11);
-//   puts(str);
-
-//   return(0);
-//}

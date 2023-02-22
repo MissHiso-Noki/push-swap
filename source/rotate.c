@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/20 17:07:01 by ccoste           ###   ########.fr       */
+/*   Created: 2023/02/22 14:56:35 by ccoste            #+#    #+#             */
+/*   Updated: 2023/02/22 15:14:04 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../includes/push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct  s_element 
+// Décale d’une position vers le haut tous les élements de la pile a.
+// Le premier élément devient le dernier
+void    rotate_a()
 {
-    struct s_element    *next;
-    int                     data;
-}                           t_element;
 
-char    swap_a(char *pile_a);
+}
 
-#endif
+// Décale d’une position vers le haut tous les élements de la pile b.
+// Le premier élément devient le dernier
+void    rotate_b()
+{
+
+}
+
+//ra et rb en meme temps
+void    rotate_r()
+{
+
+}

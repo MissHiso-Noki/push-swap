@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pile.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/20 17:07:06 by ccoste           ###   ########.fr       */
+/*   Created: 2023/02/22 15:28:20 by ccoste            #+#    #+#             */
+/*   Updated: 2023/02/22 16:09:16 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-int main(int argc, char **argv)
+int     set_pile_size(t_element *pile)
 {
-    char    tableau[2];
+    int     size;
 
-    tableau[0] = 1;
-    tableau[1] = 2;
-
-    printf("%d \n", swap_a(tableau));
-    return (0);
+    size = 0;
+    if(!pile)
+    {
+        return (0);
+    }
+    while (pile != '\0')
+    {
+        pile = pile->next;
+        size++;
+    }
+    return (size);
 }
