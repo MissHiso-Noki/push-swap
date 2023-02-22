@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:15:55 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 15:57:13 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/22 16:14:44 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void     swap(t_element *pile)
 
 // intervertit les 2 premiers éléments au sommet de la pile a.
 // Ne fait rien s’il n’y en a qu’un ou aucun.
-char    swap_a(t_element **pile_a)
+void    swap_a(t_element **pile_a)
 {
     swap(*pile_a);
     ft_putstr("sa\n");
