@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:50:43 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 15:14:00 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/23 10:45:26 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 // Décale d’une position vers le bas tous les élements de
 // la pile a. Le dernier élément devient le premier.
-void    reverse_rotate_a()
+void	reverse_rotate_a()
 {
-
 }
 
 // Décale d’une position vers le bas tous les élements de
 // la pile b. Le dernier élément devient le premier
-void    reverse_rotate_b()
+void	reverse_rotate_b()
 {
-
 }
 
 // rra et rrb en meme temps
-void    reverse_rotate_r()
+void	reverse_rotate_r()
 {
-
 }

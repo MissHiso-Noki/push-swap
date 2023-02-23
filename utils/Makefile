@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:14:27 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/22 15:53:57 by ccoste           ###   ########.fr        #
+#    Updated: 2023/02/23 11:14:14 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = utils.a
 
 _LIBFT = ft_atoi.c \
 	ft_isprint.c \
-	ft_puchar.c \
+	ft_putchar.c \
 	ft_putchar_fd.c \
 	ft_bzero.c \
 	ft_putendl_fd.c \
@@ -75,23 +75,18 @@ LIBFTCO = $(LIBFT:.c=.o)
 PRINTFCO = $(PRINTF:.c=.o)
 
 FLAG = -Wall -Wextra -Werror
-INC = -I includes/
 HEADER_DIR = .
 
 all : $(NAME)
 
 $(NAME) : $(LIBFTCO) $(PRINTFCO) $(HEADER_DIR)
-		make -C $(LIBFT_DIR) $(PRINTF_DIR)
-		gcc $(FLAG) -c $(_LIBFT) $(_PRINTF)
 		ar -rcs $(NAME) $(LIBFTCO) $(PRINTFCO)
-		ranlib $(NAME)
 
 %.o : %.c
-		gcc $(FLAG) -c $< -o $@ -I $(INC) $(HEADER_DIR)
+		cc $(FLAG) -c $< -o $@ -I $(HEADER_DIR)
 
 clean :
 		rm -rf $(LIBFTCO) $(PRINTFCO)
-		make clean -C $(LIBFT_DIR) $(PRINTF_DIR)
 
 fclean : clean
 		rm -rf $(NAME)

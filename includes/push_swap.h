@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 16:14:57 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:39:24 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,47 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../utils/includes/ft_printf.h"
+# include "../utils/includes/libft.h"
 
-typedef struct  s_element 
+typedef struct s_element
 {
-    struct s_element    *next;
-    int                     content;
-    int                     index;
+	struct s_element	*next;
+	int					content;
+	int					index;
 
-}                           t_element;
+}							t_element;
 
-typedef struct  s_begin 
+typedef struct s_pswap
 {
-    struct s_element    *begin_a;
-    struct s_element    *begin_b;
-    struct s_pile       *inst;
-}                           t_begin;
+	t_element	*pile_a;
+	t_element	*pile_b;
+	int			number_element;
+}					t_pswap;
 
-int     set_pile_size(t_element *pile);
+// check_utils.c
+int				is_digit(char c);
+int				is_sign(char c);
+int				nbstr_cmp(const char *s1, const char *s2);
 
-static void     swap(t_element *pile);
-void    swap_a(t_element **pile_a);
-void    swap_b(t_element **pile_b);
-void    swap_s(t_element **pile_a, t_element **pile_b);
+// check.c
+static int		argv_is_number(char *argv);
+static int		is_double_check(char **argv);
+static int		argv_is_zero(char *argv);
+int				is_correct(char **argv);
 
-static void     push(t_element **src, t_element **dest);
-void    push_a(t_element **pile_a, t_element **pile_b);
-void    push_b(t_element **pile_a, t_element **pile_b);
+// pile.c
+int				set_pile_size(t_element *pile);
+
+// swap.c
+static void		swap(t_element *pile);
+void			swap_a(t_element **pile_a);
+void			swap_b(t_element **pile_b);
+void			swap_s(t_element **pile_a, t_element **pile_b);
+
+// push.c
+static void		push(t_element **src, t_element **dest);
+void			push_a(t_element **pile_a, t_element **pile_b);
+void			push_b(t_element **pile_a, t_element **pile_b);
 
 #endif

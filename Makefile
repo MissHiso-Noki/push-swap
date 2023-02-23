@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/22 16:08:24 by ccoste           ###   ########.fr        #
+#    Updated: 2023/02/23 14:10:35 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ _SRC = main.c \
 	push.c \
 	reverse_rotate.c \
 	rotate.c \
-	swap.c
+	swap.c \
+	check.c \
+	check_utils.c
 
 SRC_DIR = source
 
@@ -29,17 +31,12 @@ SOURCE = $(addprefix $(SRC_DIR)/, $(_SRC))
 SOURCECO = $(SOURCE:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
-INC = -I includes/
 HEADER_DIR = .
-CC = cc
 
 all : $(NAME)
 
 $(NAME) : $(SOURCECO) $(HEADER_DIR)
-		make -C $(SRC_DIR)
-		gcc $(FLAG) -c $(_SRC)
 		ar -rcs $(NAME) $(SOURCECO)
-		ranlib $(NAME)
 
 # "%.o : %.c" =".c.o :"
 # Permet de construire des .o a partir de .c (c'est une regle generique)
@@ -48,13 +45,11 @@ $(NAME) : $(SOURCECO) $(HEADER_DIR)
 # -c :	ne link pas les fichiers sources et les transforme en .o
 # - I :	include le directorie $(HEADERS)
 %.o : %.c
-	gcc $(FLAGS) -c $< -o $@ -I $(INC) $(HEADER_DIR)
+	cc $(FLAGS) -c $< -o $@ -I $(HEADER_DIR)
 
 # Enleve les .o / -f = --force
 clean :
 	rm -rf $(SOURCECO)
-	make clean -C $(SRC_DIR)
-
 
 # Apelle clean et enleve .a
 fclean : clean
