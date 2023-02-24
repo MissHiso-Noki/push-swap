@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/24 10:38:56 by ccoste           ###   ########.fr        #
+#    Updated: 2023/02/24 12:09:52 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ HEADER_DIR = .
 all : $(NAME)
 
 $(NAME) : $(SOURCECO) $(HEADER_DIR)
+		make -C utils/
+		cc $(FLAGS) -I $(HEADER_DIR) $(SOURCECO) -o $(NAME)
 		ar -rcs $(NAME) $(SOURCECO)
 
 # "%.o : %.c" =".c.o :"
@@ -49,10 +51,12 @@ $(NAME) : $(SOURCECO) $(HEADER_DIR)
 # Enleve les .o / -f = --force
 clean :
 	rm -rf $(SOURCECO)
+	make clean -C utils
 
 # Apelle clean et enleve .a
 fclean : clean
 	rm -rf $(NAME)
+	rm -rf utils/utils.a
 
 # Apelle fclean et refait notre binaire
 re : fclean all

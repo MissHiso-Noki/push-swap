@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 10:40:10 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 11:22:13 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int				nbstr_cmp(const char *s1, const char *s2);
 
 // check.c
 int				argv_is_number(char *argv);
-int				is_double_check(char **argv);
+int				is_double_check(int argc, char **argv);
 int				argv_is_zero(char *argv);
-int				is_correct(char **argv);
+int				is_correct(int argc, char **argv);
 
 // pile.c
 int				set_pile_size(t_element *pile);
 void			free_pile(t_element **pile);
-void			exit_error(t_element **pile_a, t_element **pile_b);
+void			exit_error(t_pswap *push_swap);
 
 // swap.c
 void			swap(t_element *pile);

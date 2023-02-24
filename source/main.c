@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 10:36:17 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 11:22:49 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	main(int argc, char **argv)
 	{
 		return (0);
 	}
-	if (!is_correct(argv))
+	if (!is_correct(argc, argv))
 	{
-		exit_error(NULL, NULL);
+		exit_error(&push_swap);
 	}
 	push_swap_trie(push_swap);
 	return (0);

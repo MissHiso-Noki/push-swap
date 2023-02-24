@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:28:20 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 10:42:00 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 11:09:20 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	set_pile_size(t_element *pile)
 	{
 		return (0);
 	}
-	while (pile != '\0')
+	while (pile != NULL)
 	{
 		pile = pile->next;
 		size++;
@@ -38,7 +38,7 @@ void	free_pile(t_element **pile)
 	{
 		return ;
 	}
-	while (*pile != '\0')
+	while (*pile != NULL)
 	{
 		tmp = (*pile)->next;
 		free(*pile);
@@ -48,15 +48,16 @@ void	free_pile(t_element **pile)
 }
 
 // free les piles et renvoi le message d'erreur
-void	exit_error(t_element **pile_a, t_element **pile_b)
+void	exit_error(t_pswap *push_swap)
 {
-	if (pile_a == NULL || *pile_a != NULL)
+
+	if (push_swap->pile_a != NULL)
 	{
-		free_pile(pile_a);
+		free_pile(&push_swap->pile_a);
 	}
-	if (pile_b == NULL || *pile_b != NULL)
+	if (push_swap->pile_b != NULL)
 	{
-		free_pile(pile_b);
+		free_pile(&push_swap->pile_b);
 	}
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 }

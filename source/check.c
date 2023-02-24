@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:19:11 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 10:40:39 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 11:35:59 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ int	argv_is_number(char *argv)
 }
 
 // check si il y a des double et si double renvoi 1
-int	is_double_check(char **argv)
+int	is_double_check(int argc, char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[j] != '\0')
+	while (argc > i)
 	{
-		j = 1;
-		while (argv[j] != '\0')
+		j = i + 1;
+		while (argc > j)
 		{
-			if (j != i && nbstr_cmp(argv[i], argv[j]) == 0)
+			if (nbstr_cmp(argv[i], argv[j]) == 0)
 			{
 				return (1);
 			}
@@ -79,14 +79,14 @@ int	argv_is_zero(char *argv)
 
 // check que argv est un nombre, qu'il y a que un zero,
 // et qu'il n'y a pas de double si tout es okay envoi 1
-int	is_correct(char **argv)
+int	is_correct(int argc, char **argv)
 {
 	int	i;
 	int	nb_zeros;
 
 	nb_zeros = 0;
 	i = 1;
-	while (argv[i] != '\0')
+	while (argc > i)
 	{
 		if (!argv_is_number(argv[i]))
 		{
@@ -99,7 +99,7 @@ int	is_correct(char **argv)
 	{
 		return (0);
 	}
-	if (is_double_check(argv))
+	if (is_double_check(argc, argv))
 	{
 		return (0);
 	}
