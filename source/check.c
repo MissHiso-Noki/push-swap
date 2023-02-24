@@ -6,14 +6,14 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:19:11 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/23 14:40:25 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 10:40:39 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 // check si argv est juste un nombre, si autre renvoi 0
-static int	argv_is_number(char *argv)
+int	argv_is_number(char *argv)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ static int	argv_is_number(char *argv)
 }
 
 // check si il y a des double et si double renvoi 1
-static int	is_double_check(char **argv)
+int	is_double_check(char **argv)
 {
 	int	i;
 	int	j;
@@ -57,7 +57,7 @@ static int	is_double_check(char **argv)
 }
 
 // si different de 0 return 0, si == 0 return 1
-static int	argv_is_zero(char *argv)
+int	argv_is_zero(char *argv)
 {
 	int	i;
 
@@ -78,7 +78,7 @@ static int	argv_is_zero(char *argv)
 }
 
 // check que argv est un nombre, qu'il y a que un zero,
-// et qu'il n'y a pas de double
+// et qu'il n'y a pas de double si tout es okay envoi 1
 int	is_correct(char **argv)
 {
 	int	i;

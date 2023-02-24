@@ -6,13 +6,13 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:15:55 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/23 10:50:31 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 09:35:58 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	swap(t_element *pile)
+void	swap(t_element *pile)
 {
 	int	tmp;
 

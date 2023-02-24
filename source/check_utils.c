@@ -6,12 +6,13 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:03:25 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/23 14:41:42 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/02/24 09:32:12 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+// si c'est un chiffre retourne 1 sinon 0
 int	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -21,6 +22,7 @@ int	is_digit(char c)
 	return (0);
 }
 
+// si il y a un signe return 1 sinon 0
 int	is_sign(char c)
 {
 	if (c == '+' || c == '-')
@@ -30,6 +32,7 @@ int	is_sign(char c)
 	return (0);
 }
 
+// compare des nombre si identique renvoi 0 sinon renvoi autre chose
 int	nbstr_cmp(const char *s1, const char *s2)
 {
 	int	i;

@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/23 14:10:35 by ccoste           ###   ########.fr        #
+#    Updated: 2023/02/24 10:38:56 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ NAME = push_swap.a
 # Les fichiers de .c
 _SRC = main.c \
 	pile.c \
-	push.c \
 	reverse_rotate.c \
 	rotate.c \
 	swap.c \
