@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:21:39 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/22 15:52:04 by ccoste           ###   ########.fr       */
+/*   Created: 2023/03/01 17:28:48 by ccoste            #+#    #+#             */
+/*   Updated: 2023/03/01 17:32:11 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	char			*str;
-	unsigned int	i;
+	size_t	i;
 
-	str = s;
 	i = 0;
-	if (s == NULL)
+	if (!s)
 	{
-		return (NULL);
+		return ;
 	}
 	while (i < n)
 	{
-		str[i] = c;
+		*(char *)(s + i) = 0;
 		i++;
 	}
-	return (s);
 }
 
-//int main () {
-//   char str[50];
+void	ft_putstr(char *s)
+{
+	int	i;
 
-//   strcpy(str,"This is string.h library function");
-//   puts(str);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+}
 
-//   ft_memset(str,'$',11);
-//   puts(str);
-
-//   return(0);
-//}
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}

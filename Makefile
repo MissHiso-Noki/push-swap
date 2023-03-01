@@ -6,38 +6,34 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/02/24 12:09:52 by ccoste           ###   ########.fr        #
+#    Updated: 2023/03/01 18:44:08 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nom de l'archive
-NAME = push_swap.a
+CC 		= cc
+CFLAGS 	= -Wall -Wextra -Werror
+NAME 	= push_swap
+
+SRC_PATH = source/
+OBJ_PATH = objet_o/
 
 # Les fichiers de .c
-_SRC = main.c \
+SRC = main.c \
 	pile.c \
 	reverse_rotate.c \
 	rotate.c \
 	swap.c \
 	check.c \
-	check_utils.c
+	check_utils.c \
+	utils.c
 
-SRC_DIR = source
+SRCS 	= $(addprefix $(SRC_PATH), $(SRC))
+OBJ 	= $(SRC:.c=.o)
+OBJS 	= $(addprefix $(OBJ_PATH), $(OBJ))
+INCS = -I ./includes/
 
-SOURCE = $(addprefix $(SRC_DIR)/, $(_SRC))
-
-# specifie que OBJ represente les .c des SRC en .o
-SOURCECO = $(SOURCE:.c=.o)
-
-FLAGS = -Wall -Wextra -Werror
-HEADER_DIR = .
-
-all : $(NAME)
-
-$(NAME) : $(SOURCECO) $(HEADER_DIR)
-		make -C utils/
-		cc $(FLAGS) -I $(HEADER_DIR) $(SOURCECO) -o $(NAME)
-		ar -rcs $(NAME) $(SOURCECO)
+all : $(OBJ_PATH) $(NAME)
 
 # "%.o : %.c" =".c.o :"
 # Permet de construire des .o a partir de .c (c'est une regle generique)
@@ -45,21 +41,25 @@ $(NAME) : $(SOURCECO) $(HEADER_DIR)
 # $@ =	le nom de la cible (ici .o)
 # -c :	ne link pas les fichiers sources et les transforme en .o
 # - I :	include le directorie $(HEADERS)
-%.o : %.c
-	cc $(FLAGS) -c $< -o $@ -I $(HEADER_DIR)
+$(OBJ_PATH)%.o : $(SRC_PATH)%.c
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
+
+$(NAME) : $(OBJS)
+		$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 # Enleve les .o / -f = --force
 clean :
-	rm -rf $(SOURCECO)
-	make clean -C utils
+	rm -rf $(OBJ_PATH)
 
 # Apelle clean et enleve .a
 fclean : clean
 	rm -rf $(NAME)
-	rm -rf utils/utils.a
 
 # Apelle fclean et refait notre binaire
 re : fclean all
 
 # Phony evite le relinking
-.PHONY : clean fclean
+.PHONY : all clean fclean re
