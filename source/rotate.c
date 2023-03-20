@@ -6,44 +6,44 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:56:35 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/15 11:56:01 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/20 12:33:10 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    rotate(t_element **pile)
+void    rotate(t_element **stack)
 {
     t_element *tmp;
     t_element *tail;
 
-    tmp = *pile;
-    *pile = (*pile)->next;
-    tail = get_last_element(*pile);
+    tmp = *stack;
+    *stack = (*stack)->next;
+    tail = get_last_element(*stack);
     tmp->next = NULL;
     tail->next = tmp;
 }
 
-// Décale d’une position vers le haut tous les élements de la pile a.
+// Décale d’une position vers le haut tous les élements de la stack a.
 // Le premier élément devient le dernier
-void	rotate_a(t_element **pile_a)
+void	rotate_a(t_element **stack_a)
 {
-    rotate(pile_a);
+    rotate(stack_a);
     ft_putstr("ra\n");
 }
 
-// Décale d’une position vers le haut tous les élements de la pile b.
+// Décale d’une position vers le haut tous les élements de la stack b.
 // Le premier élément devient le dernier
-void	rotate_b(t_element **pile_b)
+void	rotate_b(t_element **stack_b)
 {
-    rotate(pile_b);
+    rotate(stack_b);
     ft_putstr("rb\n");
 }
 
 //ra et rb en meme temps
-void	rotate_r(t_element **pile_a, t_element **pile_b)
+void	rotate_r(t_element **stack_a, t_element **stack_b)
 {
-    rotate(pile_a);
-    rotate(pile_b);
+    rotate(stack_a);
+    rotate(stack_b);
     ft_putstr("rr\n");
 }

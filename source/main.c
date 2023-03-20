@@ -6,46 +6,48 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/15 12:10:05 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/20 15:11:54 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		is_sorted(t_element *pile)
+// verifie si la stack es trie, renvoi 1 si trie
+int		is_sorted(t_element *stack)
 {
-	while (pile->next != NULL)
+	while (stack->next != NULL)
 	{
-		if (pile->content > pile->next->content)
+		if (stack->value > stack->next->value)
 		{
 			return (0);
 		}
-		pile = pile->next;
+		stack = stack->next;
 	}
 	return (1);
 }
 
-void	push_swap(t_element **pile_a, t_element **pile_b, int pile_size)
+//fonction qui renvoi en fonctin du nombre d'element vers autre fonction trie
+void	push_swap(t_element **stack_a, /*t_element **stack_b,*/ int stack_size)
 {
-	if (pile_size == 2 && !is_sorted(*pile_a))
+	if (stack_size == 2 && !is_sorted(*stack_a))
 	{
-		swap(pile_a);
+		swap_a(stack_a);
 	}
-	else if (pile_size == 3 && !is_sorted(*pile_a))
+	else if (stack_size == 3 && !is_sorted(*stack_a))
 	{
+		tiny_sort(stack_a);
+	}
+	// else if (stack_size > 3 && !is_sorted(*stack_a))
+	// {
 
-	}
-	else if (pile_size > 3 && !is_sorted(*pile_a))
-	{
-
-	}
+	// }
 }
 
 int	main(int argc, char **argv)
 {
-	t_element *pile_a;
-	t_element *pile_b;
-	int 			pile_size;
+	t_element *stack_a;
+	t_element *stack_b;
+	int 			stack_size;
 
 	if (argc < 2)
 	{
@@ -55,11 +57,11 @@ int	main(int argc, char **argv)
 	{
 		exit_error(NULL, NULL);
 	}
-	pile_a = ;
-	pile_b = NULL;
-	pile_size = set_pile_size(pile_a);
-	push_swap_trie(&pile_a, &pile_b, pile_size);
-	free_pile(&pile_a);
-	free_pile(&pile_b);
+	stack_a = fill_stack_values(argc, argv);
+	stack_b = NULL;
+	stack_size = set_stack_size(stack_a);
+	push_swap(&stack_a, /*&stack_b,*/ stack_size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

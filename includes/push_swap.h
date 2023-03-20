@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/15 12:02:09 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/20 15:12:48 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
+# include <stddef.h>
 
 typedef struct s_element
 {
 	struct s_element	*next;
-	int					content;
+	int					value;
 	int					index;
 	int					pos;
 	int					target_pos;
@@ -29,14 +31,14 @@ typedef struct s_element
 }							t_element;
 
 //utils.c
-void			free_pile(t_element **pile);
-void			exit_error(t_element **pile_a, t_element **pile_b);
+void			free_stack(t_element **stack);
+void			exit_error(t_element **stack_a, t_element **stack_b);
 long int		ft_atoi(const char *str);
 void			ft_putstr(char *s);
 
 // main.c
-int				is_sorted(t_element *pile);
-void			push_swap(t_element **pile_a, t_element **pile_b, int pile_size);
+int				is_sorted(t_element *stack);
+void			push_swap(t_element **stack_a, /*t_element **stack_b,*/ int stack_size);
 
 // check_utils.c
 int				is_digit(char c);
@@ -49,33 +51,43 @@ int				is_double_check(int argc, char **argv);
 int				argv_is_zero(char *argv);
 int				is_correct(int argc, char **argv);
 
-// pile.c
-int				set_pile_size(t_element *pile);
-t_element		*get_last_element(t_element *pile);
-t_element		*get_before_last_element(t_element *pile);
-void			pile_add_bottom(t_element **stack, t_element *new);
+// stack.c
+int				set_stack_size(t_element *stack);
+t_element		*get_last_element(t_element *stack);
+t_element		*get_before_last_element(t_element *stack);
+void			stack_add_bottom(t_element **stack, t_element *new);
+t_element 		*stack_new(int value);
 
 // swap.c
-void			swap(t_element *pile);
-void			swap_a(t_element **pile_a);
-void			swap_b(t_element **pile_b);
-void			swap_s(t_element **pile_a, t_element **pile_b);
+void			swap(t_element *stack);
+void			swap_a(t_element **stack_a);
+void			swap_b(t_element **stack_b);
+void			swap_s(t_element **stack_a, t_element **stack_b);
 
 // push.c
-static void		push(t_element **src, t_element **dest);
-void			push_a(t_element **pile_a, t_element **pile_b);
-void			push_b(t_element **pile_a, t_element **pile_b);
+void			push(t_element **src, t_element **dest);
+void			push_a(t_element **stack_a, t_element **stack_b);
+void			push_b(t_element **stack_a, t_element **stack_b);
 
 // rotate.c
-void    		rotate(t_element **pile);
-void			rotate_a(t_element **pile_a);
-void			rotate_b(t_element **pile_b);
-void			rotate_r(t_element **pile_a, t_element **pile_b);
+void    		rotate(t_element **stack);
+void			rotate_a(t_element **stack_a);
+void			rotate_b(t_element **stack_b);
+void			rotate_r(t_element **stack_a, t_element **stack_b);
 
 // reverse_rotate.c
-void    		reverse_rotate(t_element **pile);
-void			reverse_rotate_a(t_element **pile_a);
-void			reverse_rotate_b(t_element **pile_b);
-void			reverse_rotate_r(t_element **pile_a, t_element **pile_b);
+void    		reverse_rotate(t_element **stack);
+void			reverse_rotate_a(t_element **stack_a);
+void			reverse_rotate_b(t_element **stack_b);
+void			reverse_rotate_r(t_element **stack_a, t_element **stack_b);
+
+// initialization.c
+
+t_element 		*fill_stack_values(int argc, char **argv);
+
+// sort_tiny.c
+
+int				find_highest_index(t_element *stack);
+void			tiny_sort(t_element **stack);
 
 #endif

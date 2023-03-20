@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/03/01 18:44:08 by ccoste           ###   ########.fr        #
+#    Updated: 2023/03/20 14:58:23 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,16 @@ OBJ_PATH = objet_o/
 
 # Les fichiers de .c
 SRC = main.c \
-	pile.c \
+	stack.c \
 	reverse_rotate.c \
 	rotate.c \
 	swap.c \
 	check.c \
 	check_utils.c \
-	utils.c
+	utils.c \
+	initialization.c \
+	push.c \
+	sort_tiny.c
 
 SRCS 	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ 	= $(SRC:.c=.o)

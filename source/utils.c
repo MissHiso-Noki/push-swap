@@ -6,45 +6,46 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:28:48 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/15 11:54:02 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/20 14:20:19 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// free tous les elements d'une pile et pointe la pile sure NULL
-void	free_pile(t_element **pile)
+// free tous les elements d'une stack et pointe la stack sure NULL
+void	free_stack(t_element **stack)
 {
 	t_element	*tmp;
 
-	if (!pile || !(*pile))
+	if (!stack || !(*stack))
 	{
 		return ;
 	}
-	while (*pile != NULL)
+	while (*stack != NULL)
 	{
-		tmp = (*pile)->next;
-		free(*pile);
-		*pile = tmp;
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
-	*pile = NULL;
+	*stack = NULL;
 }
 
-// free les piles et renvoi le message d'erreur
-void	exit_error(t_element **pile_a, t_element **pile_b)
+// free les stacks et renvoi le message d'erreur
+void	exit_error(t_element **stack_a, t_element **stack_b)
 {
 
-	if (pile_a == NULL || *pile_a != NULL)
+	if (stack_a == NULL || *stack_a != NULL)
 	{
-		free_pile(pile_a);
+		free_stack(stack_a);
 	}
-	if (pile_b == NULL || *pile_b != NULL)
+	if (stack_b == NULL || *stack_b != NULL)
 	{
-		free_pile(pile_b);
+		free_stack(stack_b);
 	}
 	write(2, "Error\n", 6);
 }
 
+// converti les string en int
 long int	ft_atoi(const char *str)
 {
 	long int	nb;
@@ -69,6 +70,7 @@ long int	ft_atoi(const char *str)
 	return (nb * isneg);
 }
 
+// ecrit string donner
 void	ft_putstr(char *str)
 {
 	int	i;
