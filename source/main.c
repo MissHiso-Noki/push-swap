@@ -6,33 +6,36 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 11:22:49 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/15 12:10:05 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push_swap_trie(t_pswap push_swap)
+int		is_sorted(t_element *pile)
 {
-	int pile_size;
-
-	pile_size = push_swap.number_element;
-	if (pile_size == 2)
+	while (pile->next != NULL)
 	{
-		if (push_swap.pile_a < push_swap.pile_a->next)
+		if (pile->content > pile->next->content)
 		{
-			swap(push_swap.pile_a);
+			return (0);
 		}
-		else
-		{
-
-		}
+		pile = pile->next;
 	}
-	else if (pile_size == 3)
+	return (1);
+}
+
+void	push_swap(t_element **pile_a, t_element **pile_b, int pile_size)
+{
+	if (pile_size == 2 && !is_sorted(*pile_a))
+	{
+		swap(pile_a);
+	}
+	else if (pile_size == 3 && !is_sorted(*pile_a))
 	{
 
 	}
-	else if (pile_size > 3)
+	else if (pile_size > 3 && !is_sorted(*pile_a))
 	{
 
 	}
@@ -40,20 +43,23 @@ void	push_swap_trie(t_pswap push_swap)
 
 int	main(int argc, char **argv)
 {
-	t_pswap	push_swap;
+	t_element *pile_a;
+	t_element *pile_b;
+	int 			pile_size;
 
-// initialisation de mes piles avec bzero (rempli de zero et met NULL a la fin)
-	ft_bzero(&push_swap, sizeof(push_swap));
-// calcul de la taille (nombre d'element)
-	push_swap.number_element = set_pile_size(push_swap.pile_a);
 	if (argc < 2)
 	{
 		return (0);
 	}
 	if (!is_correct(argc, argv))
 	{
-		exit_error(&push_swap);
+		exit_error(NULL, NULL);
 	}
-	push_swap_trie(push_swap);
+	pile_a = ;
+	pile_b = NULL;
+	pile_size = set_pile_size(pile_a);
+	push_swap_trie(&pile_a, &pile_b, pile_size);
+	free_pile(&pile_a);
+	free_pile(&pile_b);
 	return (0);
 }

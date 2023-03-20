@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:28:20 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 11:09:20 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/03/15 11:12:12 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,35 @@ int	set_pile_size(t_element *pile)
 	return (size);
 }
 
-// free tous les elements d'une pile et pointe la pile sure NULL
-void	free_pile(t_element **pile)
+t_element	*get_last_element(t_element *pile)
 {
-	t_element	*tmp;
-
-	if (!pile || !(*pile))
+	while(pile && pile->next != NULL)
 	{
-		return ;
+		pile = pile->next;
 	}
-	while (*pile != NULL)
-	{
-		tmp = (*pile)->next;
-		free(*pile);
-		*pile = tmp;
-	}
-	*pile = NULL;
+	return (pile);
 }
 
-// free les piles et renvoi le message d'erreur
-void	exit_error(t_pswap *push_swap)
+t_element	*get_before_last_element(t_element *pile)
 {
+	while(pile && pile->next && pile->next->next != NULL)
+	{
+		pile = pile->next;
+	}
+	return (pile);
+}
 
-	if (push_swap->pile_a != NULL)
+void	pile_add_bottom(t_element **stack, t_element *new)
+{
+	t_element	*tail;
+
+	if (!new)
+		return ;
+	if (!*stack)
 	{
-		free_pile(&push_swap->pile_a);
+		*stack = new;
+		return ;
 	}
-	if (push_swap->pile_b != NULL)
-	{
-		free_pile(&push_swap->pile_b);
-	}
-	write(2, "Error\n", 6);
+	tail = get_last_element(*stack);
+	tail->next = new;
 }
