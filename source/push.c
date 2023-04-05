@@ -6,15 +6,15 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:57:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/20 14:49:39 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 13:13:56 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push(t_element **src, t_element **dest)
+void	push(t_node **src, t_node **dest)
 {
-	t_element	*tmp;
+	t_node	*tmp;
 
 	if (*src == NULL)
 	{
@@ -28,7 +28,7 @@ void	push(t_element **src, t_element **dest)
 
 // Prend le premier élément au sommet de b et le met sur a.
 // Ne fait rien si b est vide
-void	push_a(t_element **stack_a, t_element **stack_b)
+void	push_a(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_b, stack_a);
 	ft_putstr("pa\n");
@@ -36,7 +36,7 @@ void	push_a(t_element **stack_a, t_element **stack_b)
 
 // Prend le premier élément au sommet de a et le met sur b.
 // Ne fait rien si a est vide
-void	push_b(t_element **stack_a, t_element **stack_b)
+void	push_b(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_a, stack_b);
 	ft_putstr("pb\n");

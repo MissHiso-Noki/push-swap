@@ -6,13 +6,13 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:15:55 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/20 13:59:02 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 13:50:57 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap(t_element *stack)
+void	swap(t_node *stack)
 {
 	int	tmp;
 
@@ -21,9 +21,9 @@ void	swap(t_element *stack)
 	{
 		return ;
 	}
-	tmp = stack->value;
-	stack->value = stack->next->value;
-	stack->next->value = tmp;
+	tmp = stack->nb;
+	stack->nb = stack->next->nb;
+	stack->next->nb = tmp;
 	tmp = stack->index;
 	stack->index = stack->next->index;
 	stack->next->index = tmp;
@@ -31,7 +31,7 @@ void	swap(t_element *stack)
 
 // intervertit les 2 premiers éléments au sommet de la stack a.
 // Ne fait rien s’il n’y en a qu’un ou aucun.
-void	swap_a(t_element **stack_a)
+void	swap_a(t_node **stack_a)
 {
 	swap(*stack_a);
 	ft_putstr("sa\n");
@@ -39,14 +39,14 @@ void	swap_a(t_element **stack_a)
 
 // intervertit les 2 premiers éléments au sommet de la stack b.
 // Ne fait rien s’il n’y en a qu’un ou aucun
-void	swap_b(t_element **stack_b)
+void	swap_b(t_node **stack_b)
 {
 	swap(*stack_b);
 	ft_putstr("sb\n");
 }
 
 // sa et sb en meme temps
-void	swap_s(t_element **stack_a, t_element **stack_b)
+void	swap_s(t_node **stack_a, t_node **stack_b)
 {
 	swap(*stack_a);
 	swap(*stack_b);

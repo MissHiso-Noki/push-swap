@@ -6,20 +6,20 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:50:43 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/03 20:15:24 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 13:56:49 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void    reverse_rotate(t_element **stack)
+void	reverse_rotate(t_node **stack)
 {
-    t_element	*tmp;
-	t_element	*tail;
-	t_element	*before_tail;
+	t_node	*tmp;
+	t_node	*tail;
+	t_node	*before_tail;
 
-	tail = get_last_element(*stack);
-	before_tail = get_before_last_element(*stack);
+	tail = node_last(*stack);
+	before_tail = node_before_last(*stack);
 	tmp = *stack;
 	*stack = tail;
 	(*stack)->next = tmp;
@@ -28,24 +28,24 @@ void    reverse_rotate(t_element **stack)
 
 // Décale d’une position vers le bas tous les élements de
 // la stack a. Le dernier élément devient le premier.
-void	reverse_rotate_a(t_element **stack_a)
+void	reverse_rotate_a(t_node **stack_a)
 {
-    reverse_rotate(stack_a);
-    ft_putstr("rra\n");
+	reverse_rotate(stack_a);
+	ft_putstr("rra\n");
 }
 
 // Décale d’une position vers le bas tous les élements de
 // la stack b. Le dernier élément devient le premier
-void	reverse_rotate_b(t_element **stack_b)
+void	reverse_rotate_b(t_node **stack_b)
 {
-    reverse_rotate(stack_b);
-    ft_putstr("rrb\n");
+	reverse_rotate(stack_b);
+	ft_putstr("rrb\n");
 }
 
 // rra et rrb en meme temps
-void	reverse_rotate_r(t_element **stack_a, t_element **stack_b)
+void	reverse_rotate_r(t_node **stack_a, t_node **stack_b)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
-    ft_putstr("rrr\n");
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
+	ft_putstr("rrr\n");
 }

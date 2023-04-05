@@ -6,18 +6,18 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/03 20:17:55 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 14:13:40 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 // verifie si la stack es trie, renvoi 1 si trie
-int		is_sorted(t_element *stack)
+int	is_sorted(t_node *stack)
 {
 	while (stack->next != NULL)
 	{
-		if (stack->value > stack->next->value)
+		if (stack->nb > stack->next->nb)
 		{
 			return (0);
 		}
@@ -27,7 +27,7 @@ int		is_sorted(t_element *stack)
 }
 
 //fonction qui renvoi en fonctin du nombre d'element vers autre fonction trie
-void	push_swap(t_element **stack_a, /*t_element **stack_b,*/ int stack_size)
+void	push_swap(t_node **stack_a, /*t_node **stack_b,*/ int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))
 	{
@@ -45,9 +45,9 @@ void	push_swap(t_element **stack_a, /*t_element **stack_b,*/ int stack_size)
 
 int	main(int argc, char **argv)
 {
-	t_element *stack_a;
-	t_element *stack_b;
-	int 			stack_size;
+	t_node	*stack_a;
+	t_node	*stack_b;
+	int		stack_size;
 
 	if (argc < 2)
 	{
@@ -59,7 +59,7 @@ int	main(int argc, char **argv)
 	}
 	stack_a = fill_stack_values(argc, argv);
 	stack_b = NULL;
-	stack_size = set_stack_size(stack_a);
+	stack_size = node_size(stack_a);
 	push_swap(&stack_a, /*&stack_b,*/ stack_size);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

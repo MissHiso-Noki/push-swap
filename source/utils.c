@@ -6,16 +6,16 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:28:48 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/20 14:20:19 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 14:12:13 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 // free tous les elements d'une stack et pointe la stack sure NULL
-void	free_stack(t_element **stack)
+void	free_stack(t_node **stack)
 {
-	t_element	*tmp;
+	t_node	*tmp;
 
 	if (!stack || !(*stack))
 	{
@@ -31,9 +31,8 @@ void	free_stack(t_element **stack)
 }
 
 // free les stacks et renvoi le message d'erreur
-void	exit_error(t_element **stack_a, t_element **stack_b)
+void	exit_error(t_node **stack_a, t_node **stack_b)
 {
-
 	if (stack_a == NULL || *stack_a != NULL)
 	{
 		free_stack(stack_a);
@@ -81,4 +80,25 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+}
+
+// afficher la liste chainee
+void	afficherliste(t_node **liste)
+{
+	t_node	*actuel;
+
+	// part du premier element
+	actuel = *liste;
+	if (liste == NULL)
+	{
+		return ;
+	}
+	while (actuel != NULL)
+	{
+		// affiche contenu chaque elements
+		printf ("[%d] -> ", actuel->nb);
+		// passe au suivant a chaque fois
+		actuel = actuel->next;
+	}
+	printf("NULL\n");
 }

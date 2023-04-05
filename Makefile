@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/04/03 23:51:57 by ccoste           ###   ########.fr        #
+#    Updated: 2023/04/05 13:19:22 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_PATH = objet_o/
 
 # Les fichiers de .c
 SRC = main.c \
-	stack.c \
+	node_utils.c \
 	reverse_rotate.c \
 	rotate.c \
 	swap.c \
@@ -45,7 +45,7 @@ all : $(OBJ_PATH) $(NAME)
 # -c :	ne link pas les fichiers sources et les transforme en .o
 # - I :	include le directorie $(HEADERS)
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+	$(CC) $(CFLAGS) -g -c $< -o $@ $(INCS)
 
 $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
