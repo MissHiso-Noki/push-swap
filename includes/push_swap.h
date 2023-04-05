@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/20 15:12:48 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/03 20:29:16 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,15 @@
 # include <limits.h>
 # include <stddef.h>
 
+typedef struct s_stack
+{
+	int					nb;
+	struct s_stack		*next;
+}							t_stack;
+
 typedef struct s_element
 {
+	t_stack				*first;
 	struct s_element	*next;
 	int					value;
 	int					index;
@@ -87,7 +94,6 @@ t_element 		*fill_stack_values(int argc, char **argv);
 
 // sort_tiny.c
 
-int				find_highest_index(t_element *stack);
 void			tiny_sort(t_element **stack);
 
 #endif

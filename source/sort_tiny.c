@@ -6,60 +6,54 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 14:57:57 by ccoste            #+#    #+#             */
-/*   Updated: 2023/03/20 16:04:43 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/03 23:50:45 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// return le plus gros element de stack
-int	find_highest_index(t_element *stack)
-{
-	int	index;
-
-	index = stack->index;
-	while(stack != NULL)
-	{
-		if (stack->index > index)
-		{
-			index = stack->index;
-		}
-		stack = stack->next;
-	}
-	return (index);
-}
-
-//Sorts a stack of 3 numbers in 2 or fewer moves. The sorting is done by index
-//*	rather than value. Example:
-//*		values:		 0	 9	 2
-//*		indexes:	[1]	[3]	[2]
-//*	Solution, 2 moves:
-//*	rra:
-//*		values:		 2	 0	 9
-//*		indexes:	[2]	[1]	[3]
-//*	sa:
-//*		values:		 0	 2	 9
-//*		indexes:	[1]	[2]	[3]
 void	tiny_sort(t_element **stack)
 {
-	int	highest;
+	int	first;
+	int second;
+	int	third;
 
 	if (is_sorted(*stack))
 	{
-		return ;
+		return;
 	}
-	highest = find_highest_index(*stack);
-	printf("%d", highest);
-	if ((*stack)->index == highest)
+	first = (*stack)->first->nb;
+	second = (*stack)->first->next->nb;
+	third = (*stack)->first->next->next->nb;
+	printf("%d", first);
+	printf("%d", second);
+	printf("%d", third);
+	// 3 2 1
+	if (first > second && second > third && first > third)
 	{
 		rotate_a(stack);
+		swap_a(stack);
 	}
-	else if ((*stack)->next->index == highest)
+	// 1 3 2
+	else if (first < second && second > third && first < third)
 	{
 		reverse_rotate_a(stack);
+		swap_a(stack);
 	}
-	if ((*stack)->index > (*stack)->next->index)
+	// 2 1 3
+	else if (first > second && second < third && first < third)
 	{
 		swap_a(stack);
 	}
+	// 2 3 1
+	else if (first < second && second > third && first > third)
+	{
+		reverse_rotate_a(stack);
+	}
+	// 3 1 2
+	else if (first > second && second < third && first > third)
+	{
+		rotate_a(stack);
+	}
 }
+
