@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:34:41 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:34:44 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:31:06 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	push(t_node **src, t_node **dest)
 	t_node	*tmp;
 
 	if (*src == NULL)
-	{
 		return ;
-	}
 	tmp = (*src)->next;
 	(*src)->next = *dest;
 	*dest = *src;

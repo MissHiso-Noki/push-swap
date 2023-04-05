@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 17:28:48 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:12:13 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:34:47 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	free_stack(t_node **stack)
 	t_node	*tmp;
 
 	if (!stack || !(*stack))
-	{
 		return ;
-	}
 	while (*stack != NULL)
 	{
 		tmp = (*stack)->next;
@@ -34,13 +32,9 @@ void	free_stack(t_node **stack)
 void	exit_error(t_node **stack_a, t_node **stack_b)
 {
 	if (stack_a == NULL || *stack_a != NULL)
-	{
 		free_stack(stack_a);
-	}
 	if (stack_b == NULL || *stack_b != NULL)
-	{
 		free_stack(stack_b);
-	}
 	write(2, "Error\n", 6);
 }
 
@@ -87,17 +81,12 @@ void	afficherliste(t_node **liste)
 {
 	t_node	*actuel;
 
-	// part du premier element
 	actuel = *liste;
 	if (liste == NULL)
-	{
 		return ;
-	}
 	while (actuel != NULL)
 	{
-		// affiche contenu chaque elements
 		printf ("[%d] -> ", actuel->nb);
-		// passe au suivant a chaque fois
 		actuel = actuel->next;
 	}
 	printf("NULL\n");

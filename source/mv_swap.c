@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:35:16 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:35:20 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:31:23 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	swap(t_node *stack)
 
 	tmp = 0;
 	if (stack == NULL || stack->next == NULL)
-	{
 		return ;
-	}
 	tmp = stack->nb;
 	stack->nb = stack->next->nb;
 	stack->next->nb = tmp;

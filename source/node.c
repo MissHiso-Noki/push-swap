@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:36:02 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:36:06 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:31:54 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	node_size(t_node *lst)
 
 	size = 0;
 	if (!lst)
-	{
 		return (0);
-	}
 	while (lst != NULL)
 	{
 		lst = lst->next;
@@ -37,9 +35,7 @@ t_node	*node_new(int nbr)
 
 	new = malloc(sizeof(t_node));
 	if (!new)
-	{
 		return (NULL);
-	}
 	new->nb = nbr;
 	new->index = 0;
 	new->next = NULL;
@@ -50,9 +46,7 @@ t_node	*node_new(int nbr)
 t_node	*node_last(t_node *lst)
 {
 	while (lst->next != NULL)
-	{
 		lst = lst->next;
-	}
 	return (lst);
 }
 
@@ -60,9 +54,7 @@ t_node	*node_last(t_node *lst)
 t_node	*node_before_last(t_node *lst)
 {
 	while (lst->next->next != NULL)
-	{
 		lst = lst->next;
-	}
 	return (lst);
 }
 

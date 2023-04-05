@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:37:50 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 15:02:17 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:24:38 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ int	get_max_bits(t_node **stack)
 	while (head != NULL)
 	{
 		if (head->index > max)
-		{
 			max = head->index;
-		}
 		head = head->next;
 	}
 	while ((max > max_bits) != 0)
-	{
 		max_bits++;
-	}
 	return (max_bits);
 }
 
@@ -54,19 +50,13 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 		while (j++ < size)
 		{
 			head_a = *stack_a;
-			if(((head_a->index > i) & 1) == 1)
-			{
+			if (((head_a->index > i) & 1) == 1)
 				rotate_a(stack_a);
-			}
 			else
-			{
 				push_b(stack_a, stack_b);
-			}
 		}
 		while (node_size(*stack_b) != 0)
-		{
 			push_a(stack_a, stack_b);
-		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:03:25 by ccoste            #+#    #+#             */
-/*   Updated: 2023/02/24 09:32:12 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:29:37 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 int	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -26,9 +24,7 @@ int	is_digit(char c)
 int	is_sign(char c)
 {
 	if (c == '+' || c == '-')
-	{
 		return (1);
-	}
 	return (0);
 }
 
@@ -43,16 +39,12 @@ int	nbstr_cmp(const char *s1, const char *s2)
 	if (s1[i] == '+')
 	{
 		if (s2[j] != '+')
-		{
 			i++;
-		}
 	}
 	else
 	{
 		if (s2[j] == '+')
-		{
 			j++;
-		}
 	}
 	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
 	{
