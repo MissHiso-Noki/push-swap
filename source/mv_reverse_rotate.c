@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:34:24 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:34:26 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 01:08:23 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 void	reverse_rotate(t_node **stack)
 {
-	t_node	*tmp;
+	t_node	*head;
 	t_node	*tail;
-	t_node	*before_tail;
 
-	tail = node_last(*stack);
-	before_tail = node_before_last(*stack);
-	tmp = *stack;
+	if (node_size(*stack) < 2)
+		return ;
+	head = *stack;
+	tail = node_last(head);
+	while (head)
+	{
+		if (head->next->next == NULL)
+		{
+			 head->next = NULL;
+			 break ;
+		}
+		head = head->next;
+	}
+	tail->next = *stack;
 	*stack = tail;
-	(*stack)->next = tmp;
-	before_tail->next = NULL;
 }
 
 // Décale d’une position vers le bas tous les élements de

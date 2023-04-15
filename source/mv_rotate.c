@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:34:55 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 14:34:57 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 01:09:11 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 void	rotate(t_node **stack)
 {
-	t_node	*tmp;
+	t_node	*head;
 	t_node	*tail;
 
-	tmp = *stack;
-	*stack = (*stack)->next;
-	tail = node_last(*stack);
-	tmp->next = NULL;
-	tail->next = tmp;
+	if (node_size(*stack) < 2)
+		return ;
+	head = *stack;
+	tail = node_last(head);
+	*stack = head->next;
+	head->next = NULL;
+	tail->next = head;
+	return ;
 }
 
 // Décale d’une position vers le haut tous les élements de la stack a.

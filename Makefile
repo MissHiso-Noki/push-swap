@@ -6,7 +6,7 @@
 #    By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/26 15:48:01 by ccoste            #+#    #+#              #
-#    Updated: 2023/04/05 15:01:26 by ccoste           ###   ########.fr        #
+#    Updated: 2023/04/16 00:20:23 by ccoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ SRC = main.c \
 	mv_swap.c \
 	check.c \
 	check_utils.c \
-	utils.c \
+	utils_1.c \
 	node_initialization.c \
 	mv_push.c \
 	sort_tiny.c \
-	sort_radix.c
+	sort_radix.c \
+	utils_2.c \
+	index.c
 
 SRCS 	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ 	= $(SRC:.c=.o)

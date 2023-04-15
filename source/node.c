@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:36:02 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 15:31:54 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 01:05:56 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,55 @@
 //return nombre element dans la stack
 int	node_size(t_node *lst)
 {
-	int	size;
+	size_t	i;
+	t_node	*tmp;
 
-	size = 0;
-	if (!lst)
-		return (0);
-	while (lst != NULL)
+	tmp = lst;
+	i = 0;
+	while (tmp)
 	{
-		lst = lst->next;
-		size++;
+		tmp = tmp->next;
+		i++;
 	}
-	return (size);
+	return (i);
 }
 
-// creer une stack avec les valeurs fourni, renvoi la stack
-t_node	*node_new(int nbr)
+// add element debut stack
+void	node_add_front(t_node **stack, t_node *new)
 {
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return (NULL);
-	new->nb = nbr;
-	new->index = 0;
-	new->next = NULL;
-	return (new);
+	new->next = *stack;
+	*stack = new;
 }
 
 // return le dernier element de la stack
 t_node	*node_last(t_node *lst)
 {
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
+	t_node	*tmp;
 
-//return l'avant dernier element de la stack
-t_node	*node_before_last(t_node *lst)
-{
-	while (lst->next->next != NULL)
-		lst = lst->next;
-	return (lst);
+	tmp = lst;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		if (tmp->next == NULL)
+			return (tmp);
+	}
+	return (tmp);
 }
 
 // add element fin de la stack, renvoi la stack
 void	node_add_back(t_node **lst, t_node *new)
 {
-	if (!lst || !(*lst))
+	t_node	*n;
+
+	if (*lst)
 	{
-		(*lst) = new;
-		return ;
+		n = node_last(*lst);
+		n->next = new;
+		new->next = NULL;
 	}
-	node_last(*lst)->next = new;
-	new->index = node_last(*lst)->index + 1;
+	else
+	{
+		*lst = new;
+		(*lst)->next = NULL;
+	}
 }

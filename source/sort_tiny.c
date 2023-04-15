@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 14:57:57 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 15:34:26 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 01:16:23 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	tiny_sort(t_node **stack)
 	int	third;
 
 	tiny_sort2(stack);
-	if (is_sorted(*stack))
-		return ;
 	first = (*stack)->nb;
 	second = (*stack)->next->nb;
 	third = (*stack)->next->next->nb;
@@ -42,8 +40,6 @@ void	tiny_sort2(t_node **stack)
 	int	second;
 	int	third;
 
-	if (is_sorted(*stack))
-		return ;
 	first = (*stack)->nb;
 	second = (*stack)->next->nb;
 	third = (*stack)->next->next->nb;
