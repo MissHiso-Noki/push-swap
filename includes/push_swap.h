@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 02:59:22 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 22:28:50 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_node
 
 //utils.c
 void			free_stack(t_node **stack);
-void			exit_error(t_node **stack_a, t_node **stack_b);
 void			ft_free(char **str);
 int				is_sorted(t_node **stack);
 

@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 02:47:12 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 03:00:00 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 23:23:53 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ void	free_stack(t_node **stack)
 		free(tmp);
 	}
 	free(stack);
-}
-
-// free les stacks et renvoi le message d'erreur
-void	exit_error(t_node **stack_a, t_node **stack_b)
-{
-	if (stack_a == NULL || *stack_a != NULL)
-		free_stack(stack_a);
-	if (stack_b == NULL || *stack_b != NULL)
-		free_stack(stack_b);
-	write(2, "Error\n", 6);
 }
 
 void	ft_free(char **str)

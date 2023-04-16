@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:19:11 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 03:01:45 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 22:28:49 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,20 @@ void	ft_check_args(int argc, char **argv)
 	{
 		tmp = ft_atoi(args[i]);
 		if (!ft_isnum(args[i]))
-			exit_error(NULL, NULL);
+		{
+			write(2, "Error\n", 6);
+			exit (EXIT_SUCCESS);
+		}
 		if (ft_contains(tmp, args, i))
-			exit_error(NULL, NULL);
+		{
+			write(2, "Error\n", 6);
+			exit (EXIT_SUCCESS);
+		}
 		if (tmp < -2147483648 || tmp > 2147483647)
-			exit_error(NULL, NULL);
+		{
+			write(2, "Error\n", 6);
+			exit (EXIT_SUCCESS);
+		}
 		i++;
 	}
 	if (argc == 2)
