@@ -6,35 +6,48 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 00:51:18 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 03:05:16 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// verifie si la stack es trie, renvoi 1 si trie
-int	is_sorted(t_node **stack)
+// rempli stack avec valeur fourni, si erreur renvoi erreur, renvoi la stack
+void	fill_stack_values(t_node **stack, int argc, char **argv)
 {
-	t_node	*head;
+	t_node 	*new;
+	char	**args;
+	int i;
 
-	head = *stack;
-	while (head && head->next)
+	i = 0;
+	if (argc == 2)
 	{
-		if (head->nb > head->next->nb)
-			return (0);
-		head = head->next;
+		args = ft_split(argv[1], ' ');
 	}
-	return (1);
+	else
+	{
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		new = node_new(ft_atoi(args[i]));
+		node_add_back(stack, new);
+		i++;
+	}
+	index_stack(stack);
+	if (argc == 2)
+	{
+		ft_free(args);
+	}
 }
 
 //fonction qui renvoi en fonctin du nombre d'element vers autre fonction trie
 void	push_swap(t_node **stack_a, t_node **stack_b)
 {
-	if (node_size(*stack_a) == 2)
-		swap_a(stack_a);
-	else if (node_size(*stack_a) == 3)
-		tiny_sort(stack_a);
-	else if (node_size(*stack_a) > 3)
+	if (node_size(*stack_a) <= 5)
+		simple_sort(stack_a, stack_b);
+	else
 		radix_sort(stack_a, stack_b);
 }
 
@@ -44,11 +57,12 @@ int	main(int argc, char **argv)
 	t_node	**stack_b;
 
 	if (argc < 2)
-		return (0);
-	if (!is_correct(argc, argv))
-		exit_error(NULL, NULL);
-	stack_a = NULL;
-	stack_b = NULL;
+		return (-1);
+	ft_check_args(argc, argv);
+	stack_a = (t_node **)malloc(sizeof(t_node));
+	stack_b = (t_node **)malloc(sizeof(t_node));
+	*stack_a = NULL;
+	*stack_b = NULL;
 	fill_stack_values(stack_a, argc, argv);
 	if (is_sorted(stack_a))
 	{

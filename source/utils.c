@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/15 23:29:11 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/15 23:34:51 by ccoste           ###   ########.fr       */
+/*   Created: 2023/04/16 02:47:12 by ccoste            #+#    #+#             */
+/*   Updated: 2023/04/16 03:00:00 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 // free tous les elements d'une stack et pointe la stack sure NULL
 void	free_stack(t_node **stack)
 {
+	t_node	*head;
 	t_node	*tmp;
 
-	if (!stack || !(*stack))
-		return ;
-	while (*stack != NULL)
+	head = *stack;
+	while (head)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
-	*stack = NULL;
+	free(stack);
 }
 
 // free les stacks et renvoi le message d'erreur
@@ -38,56 +38,28 @@ void	exit_error(t_node **stack_a, t_node **stack_b)
 	write(2, "Error\n", 6);
 }
 
-// converti les string en int
-long int	ft_atoi(const char *str)
-{
-	long int	nb;
-	int			isneg;
-	int			i;
-
-	nb = 0;
-	isneg = 1;
-	i = 0;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
-	{
-		isneg *= -1;
-		i++;
-	}
-	while (is_digit(str[i]))
-	{
-		nb = (nb * 10) + (str[i] - '0');
-		i++;
-	}
-	return (nb * isneg);
-}
-
-// ecrit string donner
-void	ft_putstr(char *str)
+void	ft_free(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
+	while (str[i])
 		i++;
-	}
+	while (i >= 0)
+		free(str[i--]);
 }
 
-// afficher la liste chainee
-void	afficherliste(t_node **liste)
+// verifie si la stack es trie, renvoi 1 si trie
+int	is_sorted(t_node **stack)
 {
-	t_node	*actuel;
+	t_node	*head;
 
-	actuel = *liste;
-	if (liste == NULL)
-		return ;
-	while (actuel != NULL)
+	head = *stack;
+	while (head && head->next)
 	{
-		printf ("[%d] -> ", actuel->nb);
-		actuel = actuel->next;
+		if (head->nb > head->next->nb)
+			return (0);
+		head = head->next;
 	}
-	printf("NULL\n");
+	return (1);
 }

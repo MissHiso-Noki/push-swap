@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:49:49 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 01:14:11 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 02:59:22 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stddef.h>
+# include <fcntl.h>
 
 typedef struct s_node
 {
@@ -26,69 +27,62 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-//utils_1.c
+//utils.c
 void			free_stack(t_node **stack);
 void			exit_error(t_node **stack_a, t_node **stack_b);
-long int		ft_atoi(const char *str);
-void			ft_putstr(char *s);
-void			afficherliste(t_node **liste);
+void			ft_free(char **str);
+int				is_sorted(t_node **stack);
 
-//utils_2.c
-char			**ft_free_tab(char **tab);
-size_t			ft_count_words(const char *s, char c);
-void			ft_get_word(char **next, size_t *len, char c);
-char			**ft_split(const char *s, char c);
+//libft_split.c
+int				word_count(char const *s, char c);
+int				word_length(char const *s, char c);
+char			**f(char const *s, char c, char **result, int words_count);
+char			**ft_split(char const *s, char c);
+void			ft_free(char **str);
 
 // main.c
-int				is_sorted(t_node **stack);
+void			fill_stack_values(t_node **stack, int argc, char **argv);
 void			push_swap(t_node **stack_a, t_node **stack_b);
 
-// check_utils.c
-int				is_digit(char c);
-int				is_sign(char c);
-int				nbstr_cmp(const char *s1, const char *s2);
-
 // check.c
-int				argv_is_number(char *argv);
-int				is_double_check(int argc, char **argv);
-int				argv_is_zero(char *argv);
-int				is_correct(int argc, char **argv);
+int				ft_contains(int num, char **argv, int i);
+int				ft_isnum(char *num);
+void			ft_check_args(int argc, char **argv);
 
 // swap.c
-void			swap(t_node **stack);
-void			swap_a(t_node **stack_a);
-void			swap_b(t_node **stack_b);
-void			swap_s(t_node **stack_a, t_node **stack_b);
+int				swap(t_node **stack);
+int				swap_a(t_node **stack_a);
+int				swap_b(t_node **stack_b);
+int				swap_s(t_node **stack_a, t_node **stack_b);
 
 // push.c
-void			push(t_node **src, t_node **dest);
-void			push_a(t_node **stack_a, t_node **stack_b);
-void			push_b(t_node **stack_a, t_node **stack_b);
+int				push(t_node **src, t_node **dest);
+int				push_a(t_node **stack_a, t_node **stack_b);
+int				push_b(t_node **stack_a, t_node **stack_b);
 
 // rotate.c
-void			rotate(t_node **stack);
-void			rotate_a(t_node **stack_a);
-void			rotate_b(t_node **stack_b);
-void			rotate_r(t_node **stack_a, t_node **stack_b);
+int				rotate(t_node **stack);
+int				rotate_a(t_node **stack_a);
+int				rotate_b(t_node **stack_b);
+int				rotate_r(t_node **stack_a, t_node **stack_b);
 
 // reverse_rotate.c
-void			reverse_rotate(t_node **stack);
-void			reverse_rotate_a(t_node **stack_a);
-void			reverse_rotate_b(t_node **stack_b);
-void			reverse_rotate_r(t_node **stack_a, t_node **stack_b);
-
-// node_initialization.c
-
-void			fill_stack_values(t_node **stack, int argc, char **argv);
-t_node			*node_new(int nbr);
+int				reverse_rotate(t_node **stack);
+int				reverse_rotate_a(t_node **stack_a);
+int				reverse_rotate_b(t_node **stack_b);
+int			reverse_rotate_r(t_node **stack_a, t_node **stack_b);
 
 // sort_tiny.c
 
-void			tiny_sort(t_node **stack);
-void			tiny_sort2(t_node **stack);
+int				get_min(t_node **stack, int val);
+void			sort_3(t_node **stack_a);
+void			sort_4(t_node **stack_a, t_node **stack_b);
+void			sort_5(t_node **stack_a, t_node **stack_b);
+void			simple_sort(t_node **stack_a, t_node **stack_b);
 
-// node_utils.c
+// node.c
 
+t_node			*node_new(int nbr);
 int				node_size(t_node *lst);
 void			node_add_front(t_node **stack, t_node *new);
 t_node			*node_last(t_node *lst);
@@ -96,6 +90,7 @@ void			node_add_back(t_node **lst, t_node *new);
 
 // sort_radix.c
 
+int				get_distance(t_node **stack, int index);
 int				get_max_bits(t_node **stack);
 void			radix_sort(t_node **stack_a, t_node **stack_b);
 
@@ -103,10 +98,10 @@ void			radix_sort(t_node **stack_a, t_node **stack_b);
 t_node			*get_next_min(t_node **stack);
 void			index_stack(t_node **stack);
 
-// utils_3.c
-void			ft_bzero(void *s, size_t n);
-void			*ft_calloc(size_t nmemb, size_t size);
-size_t			ft_strlcpy(char *dst, const char *src, size_t size);
-size_t			ft_strlen(const char *s);
+//libft.c
+
+long	ft_atoi(const char *str);
+void	ft_putstr(char *str);
+int		ft_isdigit(int c);
 
 #endif

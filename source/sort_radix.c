@@ -6,11 +6,28 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:37:50 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/05 15:24:38 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 03:12:46 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	get_distance(t_node **stack, int index)
+{
+	t_node	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack;
+	while (head)
+	{
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
+	}
+	return (distance);
+}
 
 int	get_max_bits(t_node **stack)
 {
@@ -21,13 +38,13 @@ int	get_max_bits(t_node **stack)
 	head = *stack;
 	max = head->index;
 	max_bits = 0;
-	while (head != NULL)
+	while (head)
 	{
 		if (head->index > max)
 			max = head->index;
 		head = head->next;
 	}
-	while ((max > max_bits) != 0)
+	while ((max >> max_bits) != 0)
 		max_bits++;
 	return (max_bits);
 }
@@ -50,7 +67,7 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 		while (j++ < size)
 		{
 			head_a = *stack_a;
-			if (((head_a->index > i) & 1) == 1)
+			if (((head_a->index >> i) & 1) == 1)
 				rotate_a(stack_a);
 			else
 				push_b(stack_a, stack_b);

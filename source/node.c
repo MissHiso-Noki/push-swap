@@ -6,11 +6,25 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:36:02 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 01:05:56 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/16 02:38:42 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// creer une stack avec les valeurs fourni, renvoi la stack
+t_node	*node_new(int nbr)
+{
+	t_node	*new;
+
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		return (NULL);
+	new->nb = nbr;
+	new->index = -1;
+	new->next = NULL;
+	return (new);
+}
 
 //return nombre element dans la stack
 int	node_size(t_node *lst)
