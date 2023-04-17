@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 02:47:12 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 23:23:53 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:13:32 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,19 @@ void	free_stack(t_node **stack)
 	free(stack);
 }
 
-void	ft_free(char **str)
+void	ft_free(char **strs)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!strs)
+		return ;
+	while (strs[i])
+	{
+		free(strs[i]);
 		i++;
-	while (i >= 0)
-		free(str[i--]);
+	}
+	free (strs);
 }
 
 // verifie si la stack es trie, renvoi 1 si trie

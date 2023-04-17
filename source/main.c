@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 13:22:07 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 03:05:16 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:48:23 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // rempli stack avec valeur fourni, si erreur renvoi erreur, renvoi la stack
 void	fill_stack_values(t_node **stack, int argc, char **argv)
 {
-	t_node 	*new;
+	t_node	*new;
 	char	**args;
-	int i;
+	int		i;
 
 	i = 0;
 	if (argc == 2)

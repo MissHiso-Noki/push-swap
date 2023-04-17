@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:34:41 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 01:45:52 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:34:51 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	push(t_node **stack_to, t_node **stack_from)
 
 // Prend le premier élément au sommet de b et le met sur a.
 // Ne fait rien si b est vide
-int		push_a(t_node **stack_a, t_node **stack_b)
+int	push_a(t_node **stack_a, t_node **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
@@ -51,7 +51,7 @@ int		push_a(t_node **stack_a, t_node **stack_b)
 
 // Prend le premier élément au sommet de a et le met sur b.
 // Ne fait rien si a est vide
-int		push_b(t_node **stack_a, t_node **stack_b)
+int	push_b(t_node **stack_a, t_node **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);

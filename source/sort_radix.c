@@ -6,11 +6,27 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:37:50 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 03:12:46 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:52:08 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	get_min(t_node **stack, int val)
+{
+	t_node	*head;
+	int		min;
+
+	head = *stack;
+	min = head->index;
+	while (head->next)
+	{
+		head = head->next;
+		if ((head->index < min) && head->index != val)
+			min = head->index;
+	}
+	return (min);
+}
 
 int	get_distance(t_node **stack, int index)
 {

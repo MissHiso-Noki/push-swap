@@ -6,27 +6,11 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 14:57:57 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 02:19:06 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:54:50 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	get_min(t_node **stack, int val)
-{
-	t_node	*head;
-	int		min;
-
-	head = *stack;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && head->index != val)
-			min = head->index;
-	}
-	return (min);
-}
 
 void	sort_3(t_node **stack_a)
 {
@@ -39,6 +23,11 @@ void	sort_3(t_node **stack_a)
 	next_min = get_min(stack_a, min);
 	if (is_sorted(stack_a))
 		return ;
+	utils_sort_3(stack_a, head, min, next_min);
+}
+
+void	utils_sort_3(t_node **stack_a, t_node *head, int min, int next_min)
+{
 	if (head->index == min && head->next->index != next_min)
 	{
 		rotate_a(stack_a);

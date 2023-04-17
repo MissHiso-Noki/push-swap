@@ -6,7 +6,7 @@
 /*   By: ccoste <ccoste@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:35:16 by ccoste            #+#    #+#             */
-/*   Updated: 2023/04/16 01:47:49 by ccoste           ###   ########.fr       */
+/*   Updated: 2023/04/17 13:57:11 by ccoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	swap(t_node **stack)
 
 // intervertit les 2 premiers éléments au sommet de la stack a.
 // Ne fait rien s’il n’y en a qu’un ou aucun.
-int		swap_a(t_node **stack_a)
+int	swap_a(t_node **stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
